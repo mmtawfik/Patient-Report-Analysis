@@ -1,3 +1,8 @@
+import subprocess
+
+# Install matplotlib using pip
+subprocess.call(['pip', 'install', 'matplotlib'])
+
 #importing Labraries
 import numpy as np
 import pandas as pd
