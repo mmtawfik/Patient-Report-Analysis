@@ -11,6 +11,7 @@ import altair as alt
 from io import BytesIO
 import base64
 import zipfile36 as zipfile
+import openpyxl
 from PyInstaller.utils.hooks import copy_metadata
 datas = copy_metadata('streamlit')
 
