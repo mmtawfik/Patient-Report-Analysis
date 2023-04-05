@@ -6,3 +6,9 @@ scipy
 scikit-learn
 jupyter
 plotly
+zipfile36
+copy_metadata
+base64
+BytesIO
+altair 
+streamlit 
