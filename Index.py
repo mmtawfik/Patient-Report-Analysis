@@ -88,7 +88,30 @@ if uploaded_file is not None:
     ax.legend(fontsize=16, markerscale=2)
     st.pyplot(fig)
    
-             
+
+    # create the plot Oxygen Saturation
+    
+    # set style and palette
+    sns.set_style("whitegrid")
+    sns.set_palette("husl")
+
+    # create the plot
+    fig, ax = plt.subplots(figsize=(14, 6))
+    sns.lineplot(x="Date_Time", y="Oxygen Saturation", data=df, ax=ax, color='blue')
+    sns.scatterplot(x="Date_Time", y="Oxygen Saturation", data=df, ax=ax, color='red')
+    ax.set_xlabel('Date')
+    ax.set_ylabel('Oxygen Saturation (%)')  # add percentage sign to y-axis label
+    ax.set_title('Oxygen Saturation over Time')
+    plt.xticks(rotation=45)
+
+    # set y-axis tick labels as percentages without repeating values and in the range of 97% to 101%
+    vals = np.arange(0.97, 1.00, 0.01)  # set y-axis tick values as multiples of 1%
+    ax.set_yticks(vals)
+    ax.set_yticklabels(['{:,.0%}'.format(x) for x in vals])
+
+    # display the plot in Streamlit
+    st.pyplot(fig)
+          
         
     # Create histogram of temperature measurements using Matplotlib and Seaborn
     plt.figure(figsize=(18, 16))
