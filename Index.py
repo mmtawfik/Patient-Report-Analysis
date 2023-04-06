@@ -68,7 +68,24 @@ if uploaded_file is not None:
     ax.set_title('Average Blood Pressure over Time', fontsize=20)
     ax.legend(fontsize=16, markerscale=2)
     st.pyplot(fig)
-    
+     
+    # Create line plot of average blood pressure over time using Seaborn
+    bp_df = df.groupby("Date")["systolic blood pressure", "diastolic blood pressure"].mean().reset_index()
+    bp_df_melted = pd.melt(bp_df, id_vars=["Date"], value_vars=["systolic blood pressure", "diastolic blood pressure"], var_name="Blood Pressure Type", value_name="Blood Pressure Value")
+    fig, ax = plt.subplots(figsize=(14,10))
+    sns.lineplot(x="Date", y="Blood Pressure Value", hue="Blood Pressure Type", data=bp_df_melted, ax=ax)
+
+    # Create line plot of heart rate over time using Seaborn
+    hr_df = df.groupby("Date")["Heart Rate"].mean().reset_index()
+    sns.lineplot(data=hr_df, x="Date", y="Heart Rate", color="red", label="Heart Rate", ax=ax)
+    ax.set_xlabel('Date', fontsize=18)
+    ax.set_ylabel('Measurement Value', fontsize=18)
+    ax.set_title('Average Blood Pressure and Heart Rate over Time', fontsize=20)
+    ax.legend(fontsize=16, markerscale=2)
+    st.pyplot(fig)
+   
+             
+        
     # Create histogram of temperature measurements using Matplotlib and Seaborn
     plt.figure(figsize=(18, 16))
     sns.histplot(data=df, x='Temperature (°C)', bins=20, kde=True, color='blue')
