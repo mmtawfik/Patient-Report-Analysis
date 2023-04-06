@@ -75,31 +75,7 @@ if uploaded_file is not None:
     fig, ax = plt.subplots(figsize=(14,10))
     sns.lineplot(x="Date", y="Blood Pressure Value", hue="Blood Pressure Type", data=bp_df_melted, ax=ax)
     
-    
-    
-    
-    # create the stack plot of the "diastolic blood pressure" and "systolic blood pressure" columns
-    stackplot_title = 'Stack Plot of Diastolic vs. Systolic Blood Pressure'
-    fig, ax = plt.subplots(figsize=(10, 5))
-    sns.set_style("whitegrid")
-    sns.lineplot(data=df[['diastolic blood pressure', 'systolic blood pressure']], palette=['#00203F', '#ADEFD1'], linewidth=1.5, ax=ax)
-    ax.fill_between(df['Date_Time'], df['diastolic blood pressure'], df['systolic blood pressure'], alpha=0.25, color='#ADEFD1')
-
-    # set the plot title and axis labels
-    ax.set_title(stackplot_title, fontsize=18)
-    ax.set_xlabel('Date', fontsize=14)
-    ax.set_ylabel('Blood Pressure', fontsize=14)
-
-    # set the tick label font size
-    ax.tick_params(axis='both', which='major', labelsize=12)
-
-    # add a legend to the plot
-    ax.legend(['Diastolic Blood Pressure', 'Systolic Blood Pressure'], loc='upper left')
-
-    # display the plot in Streamlit
-    st.pyplot(fig)
-    
-    
+        
     
     
     
